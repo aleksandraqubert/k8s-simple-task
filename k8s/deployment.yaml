@@ -1,3 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 # TODO: Ваш код
+metadata:
+  name: labfive-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: labfive
+  template:
+    metadata:
+      labels:
+        app: labfive
+    spec:
+      containers:
+      - name: labfive
+        image: aleksandraqubert/labfive:${BUILD_NUMBER}
+        ports:
+        - containerPort: 8080
