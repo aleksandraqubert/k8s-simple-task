@@ -59,7 +59,7 @@ spec:
                     echo 'Pulling new changes'
                     // Крок клонування репозиторію
                     // TODO: ваш код з лабораторної № 4
-                     checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/aleksandraqubert/jenkins-ci-lab.git']]])
+                     checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/aleksandraqubert/k8s-simple-task.git']]])
         
                 }
             }
