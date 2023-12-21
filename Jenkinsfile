@@ -131,11 +131,10 @@ spec:
     image: ubuntu:22.04
     tty: true
     command:
-    - bash
+   - bash
     - '-c'
     - |
-    apt-get update && apt-get install -y curl
-
+      apt-get update && apt-get install -y curl
 """
                 }
             }
