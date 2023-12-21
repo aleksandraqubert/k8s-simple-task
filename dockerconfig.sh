@@ -38,7 +38,7 @@ CREDENTIALS=`cat <<EOF | base64 | tr -d '\n\r'
 }
 EOF`
 
-cat <<EOF | kubectl apply -f -
+cat <<EOF | microk8s kubectl apply -f -
 apiVersion: v1
 kind: Secret
 metadata:
