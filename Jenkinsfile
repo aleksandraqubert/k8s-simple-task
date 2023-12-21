@@ -59,7 +59,12 @@ spec:
                     echo 'Pulling new changes'
                     // Крок клонування репозиторію
                     // TODO: ваш код з лабораторної № 4
+<<<<<<< HEAD
                     
+=======
+                     checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/aleksandraqubert/k8s-simple-task.git']]])
+        
+>>>>>>> fdda33cbb940e4fa2dd946aa36a27e4aa6220a72
                 }
             }
         }
