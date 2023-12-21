@@ -48,8 +48,8 @@ spec:
 
     environment {
         // Поміняйте APP_NAME та DOCKER_IMAGE_NAME на ваше імʼя та прізвище, відповідно.
-        APP_NAME = 'your_app_name'
-        DOCKER_IMAGE_NAME = 'your_docker_image_name'
+        APP_NAME = 'Aleksandra'
+        DOCKER_IMAGE_NAME = 'Tkachenko'
     }
 
     stages {
@@ -59,6 +59,7 @@ spec:
                     echo 'Pulling new changes'
                     // Крок клонування репозиторію
                     // TODO: ваш код з лабораторної № 4
+                    
                 }
             }
         }
@@ -77,6 +78,18 @@ spec:
                     echo 'Testing the application'
                     // Виконання юніт-тестів.
                     // TODO: ваш код з лабораторної № 4
+            steps {
+                // Виконання юніт-тестів. Команду можна знайти в Google
+                // TODO: ваш код
+                script {
+            // Переходимо в каталог робочого простору
+            dir("${WORKSPACE}") {
+                // Встановлює залежності та виконує юніт-тести
+                sh 'go get -t -v ./...'
+                sh 'go test -v ./...'
+            }
+        }
+            }
                 }
             }
         }
@@ -102,6 +115,9 @@ spec:
                     // TODO: Підказка: bitnami/kubectl має доступну утиліту 'sed'
                     // TODO: Але ви можете використовувати будь-яке інше рішення (Kustomize, тощо)
                     // TODO: По-друге: використовуйте kubectl apply з контейнера kubectl щоб застосувати маніфести з директорії k8s
+                    
+            sh "sed -i 's|image:.*|image: ${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}|' k8s/deployment.yaml"
+            sh "kubectl apply -f k8s/"
                 }
             }
         }
@@ -132,6 +148,13 @@ spec:
                 // TODO: За допомогою контейнера ubuntu встановіть `curl`
                 // TODO: Використайте curl, щоб зробити запит на http://labfive:80
                 // TODO: Можливо, вам доведеться почекати приблизно 10 секунд, поки все буде розгорнуто вперше
+
+            // Встановлення curl
+            sh 'apt-get update && apt-get install -y curl'
+            // Почекайти 10 секунд, поки все буде розгорнуто
+            sleep 10
+            // Використайти curl для зроблення запиту на http://labfive:80
+            sh 'curl http://labfive:80'
             }
         }
     }

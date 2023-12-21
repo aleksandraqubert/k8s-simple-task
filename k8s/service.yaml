@@ -3,3 +3,13 @@ kind: Service
 metadata:
   name: labfive
 # TODO: Ваш код. Переконайтеся, що Service відкриває порт 80
+metadata:
+  name: labfive
+spec:
+  selector:
+    app: labfive
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
