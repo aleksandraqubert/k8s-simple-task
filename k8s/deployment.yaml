@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: labfive
-        image: aleksandraqubert/labfive:${BUILD_NUMBER}
+        image: DOCKER:NUMBER
         ports:
         - containerPort: 8080
